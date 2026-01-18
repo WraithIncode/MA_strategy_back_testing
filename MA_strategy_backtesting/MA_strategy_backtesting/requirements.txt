@@ -1,0 +1,5 @@
+streamlit
+numpy<2
+pandas
+matplotlib
+yfinance==0.2.40
