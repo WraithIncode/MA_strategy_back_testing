@@ -142,3 +142,16 @@ if run_button:
 
         except Exception as e:
             st.error(f"An error occurred: {e}")
+
+    # --- Assumptions & Disclaimer ---
+    with st.expander("Assumptions & Disclaimer"):
+        st.markdown("""
+        ### Assumptions
+        1.  **Execution Lag**: Trades are simulated to execute at the **close of the next day** after a signal is generated (1-day lag). This mimics a real-world scenario where you might react to a signal generated at today's close by trading tomorrow.
+        2.  **Transaction Costs**: A transaction cost of **0.1%** is applied to each trade (buy and sell) to account for fees and slippage.
+        3.  **Market Orders**: All trades are assumed to be executed as market orders at the closing price.
+        4.  **No Partial Fills**: It is assumed that the entire investment amount can be traded instantly without liquidity constraints.
+
+        ### Disclaimer
+        *This application is for educational and informational purposes only. It does not constitute financial advice, investment advice, or trading advice. Past performance is not indicative of future results. Trading in financial markets involves a high degree of risk and may not be suitable for all investors. The authors and contributors of this tool accept no liability for any losses or damages resulting from the use of this information.*
+        """)

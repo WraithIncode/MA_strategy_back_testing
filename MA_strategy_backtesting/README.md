@@ -59,3 +59,18 @@ Follow the prompts to enter your simulation parameters.
 -   `src/`: Helper modules.
     -   `downloader.py`: Robust data fetching logic (handles MultiIndex/empty data).
     -   `metrics.py`: Financial metric calculation functions.
+
+## Assumptions
+
+1.  **Execution Lag**: The simulation assumes trades are executed at the **close of the next trading day** following a signal generation (Fast MA > Slow MA). This introduces a realistic 1-day lag.
+2.  **Transaction Costs**: A flat fee of **0.1%** is applied to every trade to simulate commission and market impact.
+3.  **Data Quality**: Results depend on the accuracy of the historical data provided by `yfinance`.
+4.  **Liquidity**: Infinite liquidity is assumed; the strategy enters and exits positions at the exact closing price regardless of position size.
+
+## Disclaimer
+
+This project is for **educational and research purposes only**. It comes with no guarantees of profitability.
+-   **Not Financial Advice**: Nothing in this repository constitutes financial, investment, or legal advice.
+-   **Risk Warning**: Algorithmic trading involves substantial risk of loss.
+-   **Past Performance**: Historical backtesting results do not guarantee future performance.
+-   **Liability**: The author relies on public data sources and simplifies market mechanics. Use this tool at your own risk.
