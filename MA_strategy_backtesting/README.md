@@ -47,6 +47,7 @@ Follow the prompts to enter your simulation parameters.
 ## Input Parameters
 
 -   **Ticker Symbol**: The stock symbol to analyze (e.g., `AAPL`, `TSLA`).
+    -   *Note*: For Indian stocks (NSE/BSE), add `.NS` or `.BO` suffix (e.g., `TCS.NS`, `RELIANCE.BO`).
 -   **Investment Amount**: Initial capital (e.g., `10000`).
 -   **Fast MA Period**: Short-term window (e.g., `20`).
 -   **Slow MA Period**: Long-term window (e.g., `50`).

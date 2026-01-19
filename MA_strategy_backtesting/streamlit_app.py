@@ -22,7 +22,8 @@ Enter your parameters in the sidebar and click **Run Backtest** to see the resul
 # --- Sidebar Inputs ---
 st.sidebar.header("Strategy Parameters")
 
-ticker = st.sidebar.text_input("Ticker Symbol", value="AAPL").upper()
+ticker = st.sidebar.text_input("Ticker Symbol", value="AAPL",
+                               help="For Indian stocks, use suffix .NS (NSE) or .BO (BSE).").upper()
 investment_amount = st.sidebar.number_input(
     "Investment Amount", min_value=100.0, value=10000.0, step=100.0)
 fast_ma_period = st.sidebar.number_input(

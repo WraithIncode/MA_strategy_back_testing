@@ -11,7 +11,8 @@ print("-" * 50)
 print("Welcome to the Moving Average Crossover Strategy Backtesting Tool!")
 print("Please enter the following parameters:")
 print("-" * 50)
-ticker = input("Enter the ticker symbol (e.g., AAPL): ").upper()
+ticker = input(
+    "Enter the ticker symbol (e.g., AAPL, or TCS.NS for NSE): ").upper()
 investment_amount = float(input("Enter the investment amount (e.g., 10000): "))
 fast_ma_period = int(
     input("Enter the fast moving average period (e.g., 20): "))
