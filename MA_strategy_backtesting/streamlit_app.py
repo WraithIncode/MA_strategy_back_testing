@@ -92,9 +92,14 @@ if run_button:
             total_days_invested = data['positions'].sum()
             total_days_not_invested = total_days - total_days_invested
 
-            strategy_ret = metrics.strategy_return(data, investment_amount)
-            market_ret = metrics.market_return(data, investment_amount)
+            strategy_ret = (metrics.strategy_return(
+                data, investment_amount))-100
+            market_ret = (metrics.market_return(data, investment_amount))-100
             number_of_trades = data['positions'].diff().abs().sum()
+
+            # --- Total Final Value ---
+            strategy_final_value = data['cumulative_strategy_returns'].iloc[-1]
+            buy_and_hold_final_value = data['cumulative_market_returns'].iloc[-1]
 
             # --- Display Results ---
             st.header(f"Backtest Results: {ticker}")
@@ -107,16 +112,19 @@ if run_button:
             col4.metric("Num Trades", f"{number_of_trades:.0f}")
 
             st.subheader("Market Performance")
-            col1, col2, col3 = st.columns(3)
+            col1, col2, col3, col4 = st.columns(4)
             col1.metric("Market Return", f"{market_ret:.2f}%")
             col2.metric("Market Volatility", f"{market_volatility:.4f}")
             col3.metric("Market Sharpe", f"{market_sharpe_ratio:.4f}")
+            col4.metric("Market Final Value",
+                        f"{buy_and_hold_final_value:.2f}")
 
             st.subheader("Strategy Performance")
-            col1, col2, col3 = st.columns(3)
+            col1, col2, col3, col4 = st.columns(4)
             col1.metric("Strategy Return", f"{strategy_ret:.2f}%")
             col2.metric("Strategy Volatility", f"{strategy_volatility:.4f}")
             col3.metric("Strategy Sharpe", f"{strategy_sharpe_ratio:.4f}")
+            col4.metric("Strategy Final Value", f"{strategy_final_value:.2f}")
 
             st.markdown("---")
 

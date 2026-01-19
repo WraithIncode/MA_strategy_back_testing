@@ -79,10 +79,14 @@ total_days = (data.index[-1] - data.index[0]).days
 total_days_invested = data['positions'].sum()
 total_days_not_invested = total_days - total_days_invested
 
-strategy_return = metrics.strategy_return(data, investment_amount)
-buy_and_hold_return = metrics.market_return(data, investment_amount)
+strategy_return = (metrics.strategy_return(data, investment_amount))-100
+buy_and_hold_return = (metrics.market_return(data, investment_amount))-100
 
 number_of_trades = data['positions'].diff().abs().sum()
+
+# --- Total Final Value ---
+strategy_final_value = data['cumulative_strategy_returns'].iloc[-1]
+buy_and_hold_final_value = data['cumulative_market_returns'].iloc[-1]
 
 # --- Strategy Report ---
 print("\n" + "="*50)
@@ -94,7 +98,9 @@ print("-" * 50)
 print(f"{'Number of Trades Executed':<30} | {number_of_trades:.0f}")
 print("-" * 50)
 print(f"{'Strategy Total Return':<30} | {strategy_return:.2f}%")
+print(f"{'Strategy Final Value':<30} | {strategy_final_value:.2f}")
 print(f"{'Buy and Hold Total Return':<30} | {buy_and_hold_return:.2f}%")
+print(f"{'Buy and Hold Final Value':<30} | {buy_and_hold_final_value:.2f}")
 print("-" * 50)
 print(f"{'Total Days Analyzed':<30} | {total_days}")
 print(f"{'Total Days Invested':<30} | {total_days_invested:.0f}")
